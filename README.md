@@ -24,7 +24,7 @@ tradeBot.Trade.sendOffer({
 - [Standard Trade Offer Object](#standard-trade-offer-object)
 - [Standard User Profile Object](#standard-user-profile-object)
 - [Standard Public Profile Object](#standard-public-profile-object)
-- [Offer states](#offer-states-)
+- [Offer states](#offer-states)
 # Item Methods [^](#contents)
 #### getItemsById({ params })
 Parameters
