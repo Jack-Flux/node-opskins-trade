@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/Jack-Flux/trade-opskins-wrapper.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["opskins", "trade", "api", "wrapper", "bot", "skins", "csgo", "op skins", "csgo skins"],
+  "author": "Jack Flux",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Jack-Flux/trade-opskins-wrapper/issues"
