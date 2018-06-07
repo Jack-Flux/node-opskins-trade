@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/Jack-Flux/trade-opskins-wrapper#readme",
   "dependencies": {
+    "authenticator": "^1.1.5",
     "request": "^2.87.0"
   }
 }
