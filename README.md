@@ -4,7 +4,7 @@
 ```js
 const OPSkinsTrade = require('trade-opskins-wrapper');
 
-const tradeBot = new OPSkinsTrade('your-api-key');
+const tradeBot = new OPSkinsTrade('your-api-key', 'your-2fa-secret');
 
 tradeBot.pollTrades();
 

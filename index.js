@@ -20,6 +20,9 @@ class OPSkinsTrade extends EventEmitter {
     this.polling = polling;
   }
 
+  generateTwoFactor() {
+    return authenticator.generateToken(this.secret);
+  }
   async pollTrades() {
     const offers = (await this.Trade.getOffers()).response.offers;
     offers.forEach((offer) => {
@@ -31,8 +34,8 @@ class OPSkinsTrade extends EventEmitter {
     await sleep(this.polling);
     this.pollTrades();
   }
-  generateTwoFactor() {
-    return authenticator.generateToken(this.secret);
+  async acceptTrade() {
+    
   }
 }
 
