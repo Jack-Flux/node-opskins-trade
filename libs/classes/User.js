@@ -2,9 +2,9 @@ class User {
   constructor(request) {
     this.request = request;
   }
+
   getInventory(params) {
     return new Promise(async (resolve) => {
-      console.log(params);
       const inventory = await this.request.get(`IUser/GetInventory/v1`, params);
       resolve(inventory);
     });

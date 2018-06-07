@@ -2,7 +2,6 @@ const request = require('request');
 
 class OPRequest {
   constructor(apiKey) {
-
     if (!apiKey) {
       throw new Error('Please provide a valid API Key');
     }
@@ -17,28 +16,24 @@ class OPRequest {
     });
   }
 
-  params(inputs) {
-    let params = Object.keys(inputs).length > 0 ? '?' : '';
-    Object.keys(inputs).forEach((key) => params += `${key}=${inputs[key]}&`);
-    return params;
+  convertParams(params) {
+    let paramString = Object.keys(params).length > 0 ? '?' : '';
+    Object.keys(params).forEach((key) => params += `${key}=${params[key]}&`);
+    return paramString;
   }
-
-  get(path, inputs = {}) {
+  get(path, params = {}) {
     return new Promise((resolve) => {
-      const params = this.params(inputs);
-      this.request.get(`${this.base}/${path}${params}`, (err, resp, body) => resolve(JSON.parse(body)));
+      this.request.get(`${this.base}/${path}${this.convertParams(params)}`, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
-
-  post(path, inputs = {}) {
+  post(path, params = {}) {
     return new Promise((resolve) => {
       this.request.post({
         url: `${this.base}/${path}`,
-        form: inputs,
+        form: params,
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
-
   test() {
     this.post('ITest/TestAuthed/v1').then((data) => console.log(data));
   }
