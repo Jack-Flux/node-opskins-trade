@@ -23,6 +23,7 @@ tradeBot.Trade.sendOffer({
 - [Standard Item Object](#standard-item-object)
 - [Standard Trade Offer Object](#standard-trade-offer-object)
 - [Standard Public Profile Object](#standard-public-profile-object)
+- [Offer states](#offer-states-)
 # Item Methods [^](#contents)
 #### getItemsById({ params })
 Parameters
@@ -35,7 +36,7 @@ Response
 
 Parameter | Type | Description
 --------- | ---- | -----------
-items | object | [Standard Item Object](#standard-item-object-)
+items | object | [Standard Item Object](#standard-item-object)
 
 #### withdrawToOpskins({ params })
 Parameters
@@ -121,7 +122,7 @@ Parameters
 Parameter | Type | Required   | Description
 --------- | -----| :--------: | -----------
 uid | int |  - | ID of other user, involved in offers
-state | string |  - | A comma-separated list of offer states to filter by (See available states in [ITrade](/ITrade.md#offer-states)). 
+state | string |  - | A comma-separated list of offer states to filter by (See available states [here](#offer-states)). 
 type | string |  - | One of `sent`, `received`
 page | int | - | page number in response (starting with 1, default to 1) 
 per_page | int | - | number of items per_page in response (no more then 100, defaults to 100)
@@ -150,7 +151,7 @@ Parameters
 Parameter | Type | Required   | Description
 --------- | -----| :--------: | -----------
 uid | int | - | User ID of user whose inventory you want to see 
-app_id | int | - | Internal App ID ([see](###get-apps-))
+app_id | int | - | Internal App ID (see Trade/getApps)
 page | int | - | page number in response (starting with 1, default to 1) 
 per_page | int | - | number of items per_page in response (no more then 100)
 search | string | - | additional search by item's name 
@@ -169,7 +170,7 @@ Parameters
 Parameter | Type | Required   | Description
 --------- | -----| :--------: | -----------
 steam_id | int |  + | Steam ID of user whose inventory you want to see 
-app_id | int | + | Internal App ID (see [ITrade/GetApps](###get-apps-)
+app_id | int | + | Internal App ID (see Trade/getApps)
 page | int |  | page number in response (starting with 1, default to 1) 
 per_page | int |  | number of items per_page in response (no more then 100)
 search | string |  | additional search by item's name 
@@ -227,4 +228,6 @@ offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-obje
 # Standard Item Object
 # Standard Trade Offer Object
 # Standard Public Profile Object
+# Offer States
+#
 For further documentation please click [here](https://github.com/OPSkins/trade-opskins-api).
