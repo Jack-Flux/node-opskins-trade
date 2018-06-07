@@ -1,6 +1,6 @@
 {
-  "name": "trade-opskins-wrapper",
-  "version": "1.0.7",
+  "name": "node-opskins-trade",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
