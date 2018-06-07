@@ -1,0 +1,23 @@
+{
+  "name": "trade-opskins-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jack-Flux/trade-opskins-wrapper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jack-Flux/trade-opskins-wrapper/issues"
+  },
+  "homepage": "https://github.com/Jack-Flux/trade-opskins-wrapper#readme",
+  "dependencies": {
+    "request": "^2.87.0"
+  }
+}
