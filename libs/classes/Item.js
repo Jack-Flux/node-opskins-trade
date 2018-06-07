@@ -11,7 +11,7 @@ class Item {
   }
   withdrawToOpskins(params) {
     return new Promise(async (resolve) => {
-      const withdraw = await this.request.post('ITem/WithdrawToOpskins/v1/', params);
+      const withdraw = await this.request.post('IItem/WithdrawToOpskins/v1/', params);
       resolve(withdraw);
     });
   }
