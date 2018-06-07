@@ -13,7 +13,7 @@ tradeBot.Trade.sendOffer({
   twofactor_code: 'your-2fa-code',
   uid: 'partners-userid',
   token: 'partner-token',
-  items: [], // item list
+  items: [], // A list of item ids you wish to include in trade offer. There should be both yours and your partners items. 
 }).then((offer) => {
   console.log(offer);
 });
