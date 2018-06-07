@@ -3,7 +3,7 @@
 For further documentation please click [here](https://github.com/OPSkins/trade-opskins-api).
 
 # Usage
-#
+
 ```js
 const OPSkinsTrade = require('trade-opskins-wrapper');
 
@@ -18,30 +18,36 @@ tradeBot.Trade.sendOffer({
   console.log(offer);
 });
 ```
-#
+
 # Contents
 - [Item methods](#item-methods-)
 - [Trade methods](#trade-methods-)
 - [User methods](#user-methods-)
 # Item methods [^](#contents)
 #### getItemsById({ params })
-#
+
 Parameters
+
 Parameter | Type | Required   | Description
 --------- | -----| :--------: | -----------
 item_id| int-csv | - | item id filter, separated with comma
+
 Output
+
 Parameter | Type | Description
 --------- | ---- | -----------
 items | object | [Standard Item Object](/IItem.md#standard-item-object)
-#
+
 #### withdrawToOpskins({ params })
-#
+
 Parameters
+
 Parameter | Type | Required   | Description
 --------- | -----| :--------: | -----------
 item_id| int-csv | - | item id filter, separated with comma
+
 Output
+
 Parameter | Type | Description
 --------- | ---- | -----------
 results | object | Result from OPSkins API
@@ -54,6 +60,7 @@ output | object | Archived items
 --owner_uid | int | OPSkins UID
 --wear | float | Wear float value
 --original_sale_id | int | Original sale ID on OPSkins
+
 # Trade methods [^](#contents)
 # User methods [^](#contents)
 # Item methods [^](#contents)
