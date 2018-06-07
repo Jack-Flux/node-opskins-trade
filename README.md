@@ -224,10 +224,133 @@ Parameter | Type | Description
 --------- | -----| -------- 
 offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object)
 # User Methods [^](#contents)
-# Item Methods [^](#contents)
+### getInventory({ params })
+Parameters
+
+Parameter | Type | Required   | Description
+--------- | -----| :--------: | -----------
+app_id | int | - | Internal App ID (see Trade/getApps)
+page | int | - | page number in response (starting with 1, default to 1) 
+per_page | int | - | number of items per_page in response (no more then 100)
+search | string | - | additional search by item's name 
+sort | int | - | Code to set how results should be sorted. See available types below
+    
+Response
+
+Parameter | Type | Description
+--------- | -----| -------- 
+total     | int    | Total number of items (filtered, if search parameter is passed)
+items | array-object | items list, based on pagination and search filters. [Standard Item Object](#standard-item-object)
+sort_parameters | array-object | Available sort parameters
+--value | int | value, expected in this method
+--display_name | string | Display name
+
+#### Sort parameter values
+- `1`: By name ASC
+- `2`: By name DESC
+- `3`: By last_update ASC
+- `4`: By last_update DESC
+- `5`: By suggested price ASC
+- `6`: By suggested price DESC
+
+### getProfile({ params })
+Parameters
+
+Parameter | Type | Required   | Description
+--------- | -----| :--------: | -----------
+with_extra | bool | - | Should we send sensitive user data? Defaults to `false`
+    
+Response
+
+Parameter | Type | Description
+--------- | -----| -------- 
+user     | object | [Standard User Profile Object](#standard-user-profile-object)
+
+### updateProfile({ params })
+Parameters
+
+Parameter | Type | Required   | Description
+--------- | -----| :--------: | -----------
+display_name | string  | - | Name to display on trade offers
+inventory_is_private | boolean | - | Whether inventory is private (nobody can see it, even with token)
+allow_twofactor_code_reuse | boolean | - | Allow Two Factor code reuse for certain features (Send Offer, Accept Offer)
+    
+Response
+
+Parameter | Type | Description
+--------- | -----| -------- 
+user     | object | [Standard User Profile Object](#standard-user-profile-object)
 # Standard Item Object
+Parameter | Type | Description
+--------- | -----| -------- 
+id | int | Item ID
+internal_app_id | int | Trade/Internal App ID (see Trade/getApps)
+sku | int | Item definition (meta-data) SKU #
+wear | float | Wear float value, only applicable for certain apps
+trade_hold_expires | int / null | Trade hold expiration date. `null` if no trade hold
+name | string | Market name
+category | string | Category name e.g. "Restricted Rifle"
+color | string | Color hex #
+image | object | Generic image URLs
+--300px | string | 300px image URL
+--600px | string | 600px image URL
+suggested_price | int | OPSkins 7-day suggested price (US cents)
+preview_urls | object | Instant Field Inspection™ URLs.
+inspect | string / null | Steam inspection URL. Can be `null`.
+eth_inspect | string / null | Etherscan.io Ethereum Transaction URL. `null` for inapplicable apps.
+pattern_index | int | Pattern index (value between 1-1000) (only available for App ID `1`, `null` for other apps)
+wear_tier | string | Wear tier title (only outputted for App ID `1`)
+paint_index | int | Paint index value for a CS:GO item (property __not outputted__ for App ID `1`). Is `0` for items without a paint-index.
 # Standard Trade Offer Object
+Parameter | Type | Description
+--------- | -----| -------- 
+offer    | object | Holds offer and item data
+--id    | int | offer id
+--sender| object | Offer sender's information
+----uid  | int | Sender's uid
+----steam_id | string | Senders's SteamID
+----display_name | string | Sender's display name
+----avatar | string | Sender's avatar image url
+----items| object | Items which sender offered for trade in the offer. [Standard Item Object](#standard-item-object)
+--recipient| object | Offer recipient's information
+----uid  | int | Recipient's uid
+----steam_id | string | Recipient's SteamID
+----display_name | string | Recipient's display name
+----avatar | string | Recipient's avatar image url
+----items| object | Recipient's items which sender wanted to receive in the offer. [Standard Item Object](#standard-item-object)
+--state | int | Offer state code (See available state constants in [ITrade](#offer-states))
+--state_name | string | State's display name
+--time_created | int | Offer creation timestamp
+--time_updated | int | Last update timestamp
+--time_expires | int | Offer expiration timestamp
+--message | string | Message from sender to receiver
+--sent_by_you | bool | Whether or not offer was sent by you, not outputted on non-authenticated endpoints.
+# Standard User Profile Object
+Parameter | Type | Description
+--------- | -----| -------- 
+user     | object | Holds user info
+--id | int | OPSkins.com User ID
+--steam_id | string | Steam ID64
+--display_name | string | Display name
+--avatar | string | URL to avatar
+--twofactor_enabled | boolean | Whether or not user has Two-Factor Auth enabled.
+--api_key_exists | boolean | See whether user has API Key
+--sms_phone | string/null | (Optional via `with_extra`) Phone number used for SMS verification
+--contact_email | string/null | (Optional via `with_extra`) Email address
+--inventory_is_private | boolean | (Optional via `with_extra`) Set whether inventory is private (nobody can see it, even with token)
+--allow_twofactor_code_reuse | boolean | Allow Two Factor code reuse for certain features (Send Offer, Accept Offer)
 # Standard Public Profile Object
+Parameter | Type | Description
+--------- | -----| -------- 
+user_data | object | Holds user info
+--username | string | Display name
+--avatar | string | URL to avatar
 # Offer States
+- STATE_ACTIVE = 2;                             /** The offer is active and the recipient can accept it to exchange the items */
+- STATE_ACCEPTED = 3;                           /** The recipient accepted the offer and items were exchanged */
+- STATE_EXPIRED = 5;                            /** The offer expired from inactivity */
+- STATE_CANCELED = 6;                           /** The sender canceled the offer */
+- STATE_DECLINED = 7;                           /** The recipient declined the offer */
+- STATE_INVALID_ITEMS = 8;                      /** One of the items in the offer is no longer available/eligible so the offer was canceled automatically */
 #
 For further documentation please click [here](https://github.com/OPSkins/trade-opskins-api).
