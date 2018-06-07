@@ -1,7 +1,4 @@
 # An API wrapper for trade.OPSkins.com
-
-For further documentation please click [here](https://github.com/OPSkins/trade-opskins-api).
-
 # Usage
 
 ```js
@@ -20,11 +17,12 @@ tradeBot.Trade.sendOffer({
 ```
 
 # Contents
-- [Item methods](#item-methods-)
-- [Trade methods](#trade-methods-)
-- [User methods](#user-methods-)
-- [Standard item object](#standard-item-object-)
-- [Standard trade offer object](#standard-trade-offer-object-)
+- [Item Methods](#item-methods-)
+- [Trade Methods](#trade-methods-)
+- [User Methods](#user-methods-)
+- [Standard Item Object](#standard-item-object)
+- [Standard Trade Offer Object](#standard-trade-offer-object)
+- [Standard Public Profile Object](#standard-public-profile-object)
 # Item Methods [^](#contents)
 #### getItemsById({ params })
 Parameters
@@ -74,8 +72,8 @@ Response
 
 Parameter | Type | Description
 --------- | -----| -------- 
-offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object-)
-new items | array-object | items, new for the recipient (user that makes this API call). [Standard Item Object](#standard-item-object-)
+offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object)
+new items | array-object | items, new for the recipient (user that makes this API call). [Standard Item Object](#standard-item-object)
 
 ### cancelOffer({ params })
 Parameters
@@ -88,7 +86,7 @@ Response
 
 Parameter | Type | Description
 --------- | -----| -------- 
-offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object-)
+offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object)
 
 ### getApps()
 Response
@@ -115,7 +113,7 @@ Response
 
 Parameter | Type | Description
 --------- | -----| -------- 
-offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object-)
+offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object)
 
 ### getOffers({ params })
 Parameters
@@ -133,7 +131,7 @@ Response
 
 Parameter | Type | Description
 --------- | -----| -------- 
-offers | array | Array of [Standard Trade Offer Object](#standard-trade-offer-object-)
+offers | array | Array of [Standard Trade Offer Object](#standard-trade-offer-object)
 total | int | Total number of offers matching the input filters
 
 ### getTradeURL()
@@ -162,8 +160,8 @@ Response
 Parameter | Type | Description
 --------- | -----| -------- 
 total     | int    | Total number of items (filtered, if search parameter is passed)
-items | object | [Standard Item Object](#standard-item-object-)
-user_data | object | [Standard Public Profile Object](#standard-public-profile-object-)
+items | object | [Standard Item Object](#standard-item-object)
+user_data | object | [Standard Public Profile Object](#standard-public-profile-object)
 
 ### getUserInventoryFromSteamId({ params })
 Parameters
@@ -182,7 +180,7 @@ Parameter | Type | Description
 --------- | -----| -------- 
 total     | int    | Total number of items (filtered, if search parameter is passed)
 items | object | 
-user_data | object | [Standard Public Profile Object](#standard-public-profile-object-)
+user_data | object | [Standard Public Profile Object](#standard-public-profile-object)
 
 ### regenerateTradeURL()
 Response
@@ -208,7 +206,7 @@ Response
 
 Parameter | Type | Description
 --------- | -----| -------- 
-offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object-)
+offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object)
 
 ### sendOfferToSteamId({ params })
 Parameters
@@ -223,9 +221,10 @@ Response
 
 Parameter | Type | Description
 --------- | -----| -------- 
-offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object-)
+offer     | object    | [Standard Trade Offer Object](#standard-trade-offer-object)
 # User Methods [^](#contents)
 # Item Methods [^](#contents)
 # Standard Item Object
 # Standard Trade Offer Object
 # Standard Public Profile Object
+For further documentation please click [here](https://github.com/OPSkins/trade-opskins-api).
