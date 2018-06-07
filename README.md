@@ -6,12 +6,9 @@ const OPSkinsTrade = require('trade-opskins-wrapper');
 
 const tradeBot = new OPSkinsTrade('your-api-key');
 
-tradeBot.Trade.sendOffer({
-  twofactor_code: 'your-2fa-code',
-  uid: 'partners-userid',
-  token: 'partner-token',
-  items: [], // A list of item ids you wish to include in trade offer. There should be both yours and your partners items. 
-}).then((offer) => {
+tradeBot.pollTrades();
+
+tradeBot.on('incoming trade', (offer) => {
   console.log(offer);
 });
 ```
