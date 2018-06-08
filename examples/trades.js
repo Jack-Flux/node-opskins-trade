@@ -1,11 +1,11 @@
 const OPSkinsTrade = require('../index');
 const config = require('../config.json'); // create your own
 
-const tradeBot = new OPSkinsTrade(config.opskins.apiKey, config.opskins.secret, pollData);
+const tradeBot = new OPSkinsTrade(config.opskins.apiKey, config.opskins.secret);
 
 tradeBot.pollTrades();
 
-tradeBot.on('newoffer', (offer) => {
+tradeBot.on('newOffer', (offer) => {
   console.log(offer);
 });
 
