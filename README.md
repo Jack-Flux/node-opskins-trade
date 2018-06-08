@@ -2,7 +2,7 @@
 # Usage
 
 ```js
-const OPSkinsTrade = require('trade-opskins-wrapper');
+const OPSkinsTrade = require('node-opskins-trade');
 
 const tradeBot = new OPSkinsTrade('your-api-key', 'your-2fa-secret');
 
