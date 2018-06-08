@@ -18,7 +18,7 @@ class OPRequest {
 
   convertParams(params) {
     let paramString = Object.keys(params).length > 0 ? '?' : '';
-    Object.keys(params).forEach((key) => params += `${key}=${params[key]}&`);
+    Object.keys(params).forEach((key) => paramString += `${key}=${params[key]}&`);
     return paramString;
   }
   get(path, params = {}) {
