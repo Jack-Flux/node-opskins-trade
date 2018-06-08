@@ -26,11 +26,11 @@ class OPSkinsTrade extends EventEmitter {
 
   async pollTrades() {
     const _get = await this.Trade.getOffers();
-    const offers = _get.response.pffers;
+    const offers = _get.response.offers;
     
     offers.forEach((offer) => {
       if (Object.keys(this.pollData).includes(offer.id)) {
-        if (!this.pollData[offer.id].state === offer.state) {
+        if (this.pollData[offer.id].state !== offer.state) {
           this.emit('offerUpdated', offer);
         }
         return;
