@@ -17,22 +17,26 @@ class OPSkinsTrade extends EventEmitter {
     this.api_key = api_key;
     this.secret = secret;
     this.polling = polling;
-    this.pollData = [];
+    this.pollData = {};
   }
 
   generateTwoFactor() {
     return authenticator.generateToken(this.secret);
   }
+
   async pollTrades() {
     const _get = await this.Trade.getOffers();
     const offers = _get.response.pffers;
     
     offers.forEach((offer) => {
-      if (this.pollData.indexOf(offer.id) > -1) {
-        return false;
+      if (Object.keys(this.pollData).includes(offer.id)) {
+        if (!this.pollData[offer.id].state === offer.state) {
+          this.emit('offerUpdated', offer);
+        }
+        return;
       }
-      this.pollData.push(offer.id);
-      this.emit('incoming trade', offer);
+      this.pollData[offer.id] = offer;
+      this.emit('newOffer', offer);
     });
     
     await sleep(this.polling);

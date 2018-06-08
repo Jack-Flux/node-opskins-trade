@@ -5,10 +5,14 @@ const tradeBot = new OPSkinsTrade(config.opskins.apiKey, config.opskins.secret, 
 
 tradeBot.pollTrades();
 
-tradeBot.on('incoming trade', (offer) => {
+tradeBot.on('newoffer', (offer) => {
   console.log(offer);
 });
 
 tradeBot.on('sentOffer', (offer) => {
+  console.log(offer);
+});
+
+tradeBot.on('offerUpdated', (offer) => {
   console.log(offer);
 });

@@ -8,7 +8,15 @@ const tradeBot = new OPSkinsTrade('your-api-key', 'your-2fa-secret');
 
 tradeBot.pollTrades();
 
-tradeBot.on('incoming trade', (offer) => {
+tradeBot.on('newoffer', (offer) => {
+  console.log(offer);
+});
+
+tradeBot.on('sentOffer', (offer) => {
+  console.log(offer);
+});
+
+tradeBot.on('offerUpdated', (offer) => {
   console.log(offer);
 });
 ```
