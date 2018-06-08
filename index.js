@@ -30,6 +30,16 @@ class OPSkinsTrade extends EventEmitter {
     await sleep(this.polling);
     this.pollTrades();
   }
+  
+  getUserInventory(steamid){
+  	return this.Trade.getUserInventoryFromSteamId({'steam_id' : steamid, 'app_id' : '2'}); 
+  }
+
+  async sendOffer(steamid, items){
+  	const offerData = (await this.Trade.sendOfferToSteamId({'twofactor_code' : this.generateTwoFactor(), 'steam_id' : steamid, 'items' : items})).response.offer;
+  	this.emit('sentOffer', offerData);
+  }
+  
 }
 
 module.exports = OPSkinsTrade;

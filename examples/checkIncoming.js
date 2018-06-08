@@ -8,3 +8,7 @@ tradeBot.pollTrades();
 tradeBot.on('incoming trade', (offer) => {
   console.log(offer);
 });
+
+tradeBot.on('sentOffer', (offer) => {
+  console.log(offer);
+});
