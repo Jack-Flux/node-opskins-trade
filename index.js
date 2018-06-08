@@ -54,4 +54,4 @@ class OPSkinsTrade extends EventEmitter {
   
 }
 
-module.exports = OPSkinsTrade;
+module.exports = OPSkinsTrade
