@@ -5,7 +5,7 @@ class User {
 
   getInventory(params) {
     return new Promise(async (resolve) => {
-      const inventory = await this.request.get(`IUser/GetInventory/v1`, params);
+      const inventory = await this.request.get('IUser/GetInventory/v1', params);
       resolve(inventory);
     });
   }

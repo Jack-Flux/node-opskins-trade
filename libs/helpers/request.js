@@ -1,29 +1,32 @@
 const request = require('request');
 
+const convertParams = (params) => {
+  let paramString = Object.keys(params).length > 0 ? '?' : '';
+  Object.keys(params).forEach((key) => {
+    paramString += `${key}=${params[key]}&`;
+  });
+  return paramString;
+};
+
 class OPRequest {
   constructor(apiKey) {
     if (!apiKey) {
       throw new Error('Please provide a valid API Key');
     }
 
-    this.auth_hash = (new Buffer(apiKey + ":", 'ascii')).toString('base64');
+    this.apiKey = apiKey;
     this.base = 'https://api-trade.opskins.com';
     this.request = request.defaults({
-      headers: {
-        'Authorization': `Basic ${this.auth_hash}`,
+      auth: {
+        user: this.apiKey,
         'Content-Type': 'application/x-www-form-urlencoded',
-      }
+      },
     });
   }
 
-  convertParams(params) {
-    let paramString = Object.keys(params).length > 0 ? '?' : '';
-    Object.keys(params).forEach((key) => paramString += `${key}=${params[key]}&`);
-    return paramString;
-  }
   get(path, params = {}) {
     return new Promise((resolve) => {
-      this.request.get(`${this.base}/${path}${this.convertParams(params)}`, (err, resp, body) => resolve(JSON.parse(body)));
+      this.request.get(`${this.base}/${path}${convertParams(params)}`, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
   post(path, params = {}) {
@@ -35,7 +38,7 @@ class OPRequest {
     });
   }
   test() {
-    this.post('ITest/TestAuthed/v1').then((data) => console.log(data));
+    this.post('ITest/TestAuthed/v1').then(data => console.log(data));
   }
 }
 
