@@ -17,4 +17,4 @@ tradeBot.on('offerUpdated', (offer) => {
   console.log(offer);
 });
 
-tradeBot.User.getProfile().then(data => console.log(data));
+tradeBot.getUserInventory('76561198050589312').then(data => console.log(data));

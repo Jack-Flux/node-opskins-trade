@@ -9,6 +9,9 @@ const sleep = ms => new Promise(resolve => setTimeout(() => resolve(), ms));
 
 class OPSkinsTrade extends EventEmitter {
   constructor(apiKey, secret, polling = 1000) {
+    if (!apiKey || !secret) {
+      throw new Error(`Please provide a valid ${apiKey ? 'secret' : 'API key'}`);
+    }
     super();
     this.request = new Request(apiKey);
     this.Item = new Item(this.request);
@@ -29,13 +32,13 @@ class OPSkinsTrade extends EventEmitter {
     const { offers } = fetchTrades.response;
 
     offers.forEach((offer) => {
-      if (Object.keys(this.pollData).includes(offer.id)) {
-        if (this.pollData[offer.id].state !== offer.state) {
+      if (offer.id in this.pollData) {
+        if (this.pollData[offer.id] !== offer.state) {
           this.emit('offerUpdated', offer);
         }
         return;
       }
-      this.pollData[offer.id] = offer;
+      this.pollData[offer.id] = offer.state;
       this.emit('newOffer', offer);
     });
 
@@ -54,6 +57,7 @@ class OPSkinsTrade extends EventEmitter {
       items,
     });
     const { offer } = sendOffer.response;
+    this.pollData[offer.id] = offer.state;
     this.emit('sentOffer', offer);
   }
 

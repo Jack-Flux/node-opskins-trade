@@ -1,4 +1,4 @@
-# Trade offer management library for [Trade.OPSkins.com](trade.opskins.com)
+# Trade offer management library for Trade.OPSkins.com
 # Usage
 
 ```js

@@ -10,10 +10,6 @@ const convertParams = (params) => {
 
 class OPRequest {
   constructor(apiKey) {
-    if (!apiKey) {
-      throw new Error('Please provide a valid API Key');
-    }
-
     this.apiKey = apiKey;
     this.base = 'https://api-trade.opskins.com';
     this.request = request.defaults({
@@ -36,9 +32,6 @@ class OPRequest {
         form: params,
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
-  }
-  test() {
-    this.post('ITest/TestAuthed/v1').then(data => console.log(data));
   }
 }
 
