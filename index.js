@@ -17,16 +17,24 @@ class OPSkinsTrade extends EventEmitter {
     this.api_key = api_key;
     this.secret = secret;
     this.polling = polling;
+    this.pollData = [];
   }
 
   generateTwoFactor() {
     return authenticator.generateToken(this.secret);
   }
   async pollTrades() {
-    const offers = (await this.Trade.getOffers()).response.offers;
+    const _get = await this.Trade.getOffers();
+    const offers = _get.response.pffers;
+    
     offers.forEach((offer) => {
+      if (this.pollData.indexOf(offer.id) > -1) {
+        return false;
+      }
+      this.pollData.push(offer.id);
       this.emit('incoming trade', offer);
     });
+    
     await sleep(this.polling);
     this.pollTrades();
   }
@@ -36,8 +44,9 @@ class OPSkinsTrade extends EventEmitter {
   }
 
   async sendOffer(steamid, items){
-  	const offerData = (await this.Trade.sendOfferToSteamId({'twofactor_code' : this.generateTwoFactor(), 'steam_id' : steamid, 'items' : items})).response.offer;
-  	this.emit('sentOffer', offerData);
+  	const _send = await this.Trade.sendOfferToSteamId({'twofactor_code' : this.generateTwoFactor(), 'steam_id' : steamid, 'items' : items});
+  	const offerData = _send.response.offer;
+    this.emit('sentOffer', offerData);
   }
   
 }
