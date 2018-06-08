@@ -1,4 +1,4 @@
-# An API wrapper for trade.OPSkins.com
+# Trade offer management library for [Trade.OPSkins.com](trade.opskins.com)
 # Usage
 
 ```js

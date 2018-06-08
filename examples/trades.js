@@ -16,3 +16,5 @@ tradeBot.on('sentOffer', (offer) => {
 tradeBot.on('offerUpdated', (offer) => {
   console.log(offer);
 });
+
+tradeBot.User.getProfile().then(data => console.log(data));

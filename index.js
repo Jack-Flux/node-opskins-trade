@@ -57,6 +57,15 @@ class OPSkinsTrade extends EventEmitter {
     this.emit('sentOffer', offer);
   }
 
+  async acceptOffer(offerId) {
+    const acceptOffer = await this.Trade.acceptOffer({
+      twofactor_code: this.generateTwoFactor(),
+      offer_id: offerId,
+    });
+    const { offer } = acceptOffer.response;
+    this.pollData[offer.id] = offer;
+    this.emit('offerUpdated', offer);
+  }
 }
 
 module.exports = OPSkinsTrade;
