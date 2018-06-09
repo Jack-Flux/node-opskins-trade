@@ -51,24 +51,29 @@ class OPSkinsTrade extends EventEmitter {
   }
 
   async sendOffer(steamid, items) {
-    const sendOffer = await this.Trade.sendOfferToSteamId({
+    const _send = await this.Trade.sendOfferToSteamId({
       twofactor_code: this.generateTwoFactor(),
       steam_id: steamid,
       items,
     });
-    const { offer } = sendOffer.response;
+    if (_send.status != 1) {
+        throw _send;
+    }
+    const { offer } = _send.response;
     this.pollData[offer.id] = offer.state;
     this.emit('sentOffer', offer);
+    return offer;
   }
 
   async acceptOffer(offerId) {
-    const acceptOffer = await this.Trade.acceptOffer({
+    const _accept = await this.Trade.acceptOffer({
       twofactor_code: this.generateTwoFactor(),
       offer_id: offerId,
     });
-    const { offer } = acceptOffer.response;
+    const { offer } = _accept.response;
     this.pollData[offer.id] = offer;
     this.emit('offerUpdated', offer);
+    return offer;
   }
 }
 
