@@ -57,7 +57,7 @@ class OPSkinsTrade extends EventEmitter {
       items,
     });
     if (_send.status != 1) {
-        throw new Error(_send.message);
+        throw new Error(_send);
     }
     const { offer } = _send.response;
     this.pollData[offer.id] = offer.state;
