@@ -4,7 +4,7 @@ class User {
   }
 
   async createVCaseUser(params) {
-    const user = await this.request.get('IUser/CreateVCaseUser/v1/', params);
+    const user = await this.request.post('IUser/CreateVCaseUser/v1/', params);
     return user;
   }
   async getInventory(params) {
