@@ -3,71 +3,49 @@ class Trade {
     this.request = request;
   }
 
-  acceptOffer(params) {
-    return new Promise(async (resolve) => {
-      const offer = await this.request.post('ITrade/AcceptOffer/v1/', params);
-      resolve(offer);
-    });
+  async acceptOffer(params) {
+    const offer = await this.request.post('ITrade/AcceptOffer/v1/', params);
+    return offer;
   }
-  cancelOffer(params) {
-    return new Promise(async (resolve) => {
-      const offer = await this.request.post('ITrade/CancelOffer/v1/', params);
-      resolve(offer);
-    });
+  async cancelOffer(params) {
+    const offer = await this.request.post('ITrade/CancelOffer/v1/', params);
+    return offer;
   }
-  getApps() {
-    return new Promise(async (resolve) => {
-      const apps = await this.request.get('ITrade/GetApps/v1/', {});
-      resolve(apps);
-    });
+  async getApps() {
+    const apps = await this.request.get('ITrade/GetApps/v1/', {});
+    return apps
   }
-  getOffer(params) {
-    return new Promise(async (resolve) => {
-      const offer = await this.request.get('ITrade/GetOffer/v1/', params);
-      resolve(offer);
-    });
+  async getOffer(params) {
+    const offer = await this.request.get('ITrade/GetOffer/v1/', params);
+    return offer
   }
-  getOffers(params) {
-    return new Promise(async (resolve) => {
-      const offers = await this.request.get('ITrade/GetOffers/v1/', params);
-      resolve(offers);
-    });
+  async getOffers(params) {
+    const offers = await this.request.get('ITrade/GetOffers/v1/', params);
+    return offers;
   }
-  getTradeURL() {
-    return new Promise(async (resolve) => {
-      const tradeURL = await this.request.get('ITrade/GetTradeURL/v1/', {});
-      resolve(tradeURL);
-    });
+  async getTradeURL() {
+    const tradeURL = await this.request.get('ITrade/GetTradeURL/v1/', {});
+    return tradeURL;
   }
-  getUserInventory(params) {
-    return new Promise(async (resolve) => {
-      const inventory = await this.request.get('ITrade/GetUserInventory/v1/', params);
-      resolve(inventory);
-    });
+  async getUserInventory(params) {
+    const inventory = await this.request.get('ITrade/GetUserInventory/v1/', params);
+    return inventory;
   }
-  getUserInventoryFromSteamId(params) {
-    return new Promise(async (resolve) => {
-      const inventory = await this.request.get('ITrade/GetUserInventoryFromSteamId/v1/', params);
-      resolve(inventory);
-    });
+  async getUserInventoryFromSteamId(params) {
+    const inventory = await this.request.get('ITrade/GetUserInventoryFromSteamId/v1/', params);
+    return inventory;
   }
-  regenerateTradeURL() {
-    return new Promise(async (resolve) => {
-      const tradeURL = await this.request.post('ITrade/RegenerateTradeURL/v1/', {});
-      resolve(tradeURL);
-    });
+  async regenerateTradeURL() {
+    const tradeURL = await this.request.post('ITrade/RegenerateTradeURL/v1/', {});
+    return tradeURL;
   }
-  sendOffer(params) {
-    return new Promise(async (resolve) => {
-      const offer = await this.request.post('ITrade/SendOffer/v1/', params);
-      resolve(offer);
-    });
+  async sendOffer(params) {
+    const offer = await this.request.post('ITrade/SendOffer/v1/', params);
+    return offer;
   }
-  sendOfferToSteamId(params) {
-    return new Promise(async (resolve) => {
-      const offer = await this.request.post('ITrade/SendOfferToSteamId/v1/', params);
-      resolve(offer);
-    });
+  async sendOfferToSteamId(params) {
+    const offer = await this.request.post('ITrade/SendOfferToSteamId/v1/', params);
+    return offer;
   }
 }
 

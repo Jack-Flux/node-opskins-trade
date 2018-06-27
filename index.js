@@ -4,6 +4,9 @@ const Request = require('./libs/helpers/request');
 const Item = require('./libs/classes/Item');
 const Trade = require('./libs/classes/Trade');
 const User = require('./libs/classes/User');
+const Ethereum = require('./libs/classes/Ethereum');
+const CaseSite = require('./libs/classes/CaseSite');
+const Case = require('./libs/classes/Case');
 
 const sleep = ms => new Promise(resolve => setTimeout(() => resolve(), ms));
 
@@ -17,6 +20,9 @@ class OPSkinsTrade extends EventEmitter {
     this.Item = new Item(this.request);
     this.Trade = new Trade(this.request);
     this.User = new User(this.request);
+    this.Ethereum = new Ethereum(this.request);
+    this.CaseSite = new CaseSite(this.request);
+    this.Case = new Case(this.request);
     this.api_key = apiKey;
     this.secret = secret;
     this.polling = polling;

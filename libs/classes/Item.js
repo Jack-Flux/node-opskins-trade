@@ -3,17 +3,13 @@ class Item {
     this.request = request;
   }
 
-  getItemsById(params) {
-    return new Promise(async (resolve) => {
-      const items = await this.request.post('ITrade/GetItemsById/v1/', params);
-      resolve(items);
-    });
+  async getItemsById(params) {
+    const items = await this.request.post('ITrade/GetItemsById/v1/', params);
+    return items;
   }
-  withdrawToOpskins(params) {
-    return new Promise(async (resolve) => {
-      const withdraw = await this.request.post('IItem/WithdrawToOpskins/v1/', params);
-      resolve(withdraw);
-    });
+  async withdrawToOpskins(params) {
+    const withdraw = await this.request.post('IItem/WithdrawToOpskins/v1/', params);
+    return withdraw;
   }
 }
 

@@ -3,23 +3,17 @@ class User {
     this.request = request;
   }
 
-  getInventory(params) {
-    return new Promise(async (resolve) => {
-      const inventory = await this.request.get('IUser/GetInventory/v1', params);
-      resolve(inventory);
-    });
+  async getInventory(params) {
+    const inventory = await this.request.get('IUser/GetInventory/v1', params);
+    return inventory;
   }
-  getProfile(params) {
-    return new Promise(async (resolve) => {
-      const profile = await this.request.get('IUser/GetProfile/v1', params);
-      resolve(profile);
-    });
+  async getProfile(params) {
+    const profile = await this.request.get('IUser/GetProfile/v1', params);
+    return profile;
   }
-  updateProfile(params) {
-    return new Promise(async (resolve) => {
-      const profile = await this.request.post('IUser/UpdateProfile/v1', params);
-      resolve(profile);
-    });
+  async updateProfile(params) {
+    const profile = await this.request.post('IUser/UpdateProfile/v1', params);
+    return profile;
   }
 }
 
