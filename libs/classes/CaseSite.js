@@ -3,16 +3,16 @@ class CaseSite {
     this.request = request;
   }
 
-  async getKeyCount(params) {
-    const keyCount = await this.request.get('ICaseSite/GetKeyCount/v1', params);
+  async getKeyCount(params, headers) {
+    const keyCount = await this.request.get('ICaseSite/GetKeyCount/v1', params, headers);
     return keyCount;
   }
-  async getTradeStatus(params) {
-    const status = await this.request.get('ICaseSite/GetTradeStatus/v1', params);
+  async getTradeStatus(params, headers) {
+    const status = await this.request.get('ICaseSite/GetTradeStatus/v1', params, headers);
     return status;
   }
-  async sendKeyRequest(params) {
-    const offer = await this.request.get('ICaseSite/SendKeyRequest/v1', params);
+  async sendKeyRequest(params, headers) {
+    const offer = await this.request.post('ICaseSite/SendKeyRequest/v1', params, headers);
     return offer;
   }
 }

@@ -20,9 +20,12 @@ class OPRequest {
     });
   }
 
-  get(path, params = {}) {
+  get(path, params = {}, headers = {}) {
     return new Promise((resolve) => {
-      this.request.get(`${this.base}/${path}${convertParams(params)}`, (err, resp, body) => resolve(JSON.parse(body)));
+      this.request.get({
+        url: `${this.base}/${path}${convertParams(params)}`,
+        headers,
+      }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
   post(path, params = {}) {
@@ -30,6 +33,7 @@ class OPRequest {
       this.request.post({
         url: `${this.base}/${path}`,
         form: params,
+        headers,
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
