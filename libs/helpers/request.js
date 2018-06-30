@@ -28,7 +28,7 @@ class OPRequest {
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
-  post(path, params = {}) {
+  post(path, params = {}, headers = {}) {
     return new Promise((resolve) => {
       this.request.post({
         url: `${this.base}/${path}`,
