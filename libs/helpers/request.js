@@ -20,11 +20,11 @@ class OPRequest {
     });
   }
 
-  get(path, params = {}, headers = {}) {
+  get(path, params = {}, auth = {}) {
     return new Promise((resolve) => {
       this.request.get({
         url: `${this.base}/${path}${convertParams(params)}`,
-        headers,
+        auth,
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
