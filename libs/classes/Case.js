@@ -11,8 +11,8 @@ class Case {
     const volume = await this.request.get('ICase/GetMinimumOpenVolume/v1', {});
     return volume;
   }
-  async openWithKeys(params, headers) {
-    const cases = await this.request.post('ICase/OpenWithKeys/v1', params, headers);
+  async openWithKeys(params, auth) {
+    const cases = await this.request.post('ICase/OpenWithKeys/v1', params, auth);
     return cases;
   }
 }

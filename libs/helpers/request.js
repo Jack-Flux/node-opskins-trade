@@ -28,12 +28,12 @@ class OPRequest {
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
-  post(path, params = {}, headers = {}) {
+  post(path, params = {}, auth = {}) {
     return new Promise((resolve) => {
       this.request.post({
         url: `${this.base}/${path}`,
         form: params,
-        headers,
+        auth,
       }, (err, resp, body) => resolve(JSON.parse(body)));
     });
   }
