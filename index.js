@@ -49,6 +49,8 @@ class OPSkinsTrade extends EventEmitter {
             this.emit('newOffer', offer);
         });
 
+        this.emit('pollData', this.pollData);
+
         await sleep(this.polling);
         this.pollTrades();
     }
